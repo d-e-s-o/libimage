@@ -1,7 +1,7 @@
 // PngCodec.cpp
 
 /***************************************************************************
- *   Copyright (C) 2006-2012,2014 Daniel Mueller (deso@posteo.net)         *
+ *   Copyright (C) 2006-2012,2014,2019 Daniel Mueller (deso@posteo.net)    *
  *                                                                         *
  *   This program is free software: you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -198,7 +198,7 @@ namespace img
     stream.read(buffer, PNG_BYTES_TO_CHECK);
     stream.reposition(position);
 
-    return png_check_sig(buffer, PNG_BYTES_TO_CHECK) != 0;
+    return png_sig_cmp(buffer, 0, PNG_BYTES_TO_CHECK) == 0;
   }
 
   /**
